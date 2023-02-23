@@ -1,0 +1,142 @@
+
+.seller-row{
+    display: flex;
+    margin: 50px 0;
+}
+
+.seller-col:first-child{
+    flex: 1;
+}
+
+.seller-info{
+ 
+    width: 100%;
+}
+.seller-header {
+
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+}
+.seller-header img {
+
+    width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.seller-body{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.seller-body span{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.seller-body span:first-child{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.seller-col:last-child{
+    flex: 4;
+}
+
+.seller-footer{
+    margin-top: 30px ;
+}
+
+.follow{
+    margin: 0 15px;
+    background-color: #2f5f74 ;
+    padding:  10px 25px;
+    border: none;
+    box-shadow: 0 0 5px #2f5f74;
+    color: aliceblue;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    width: max-content;
+    border-radius: 3px ;
+    display: block;
+    cursor: pointer;
+
+}
+
+.follow:hover{
+    background-color: #ffffff;
+    color: #2f5f74;
+}
+
+
+
+.seller-title{
+    text-align: center;
+    margin-bottom: 40px;
+
+}
+
+.seller-products .card-footer button{
+    display: block;
+    margin: 5px auto;
+      background-color: #2f5f74 ;
+      padding:  10px 25px;
+      border: none;
+      box-shadow: 0 0 5px #2f5f74;
+      color: #ffffff;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      transition: all 0.5s;
+}
+
+.seller-products .card-footer button:hover{
+
+    background-color: #ffffff;
+    color: #2f5f74;
+}
+
+.seller-products.filter-page{
+    display: flex;
+    justify-content: center;
+
+}
+
+.seller-products.filter-page ul{
+    display: flex;
+}
+
+.seller-products.filter-page ul li{
+    padding: 1px;
+    border: 0.5px solid #485b63;
+}
+
+.seller-products.filter-page ul li:hover{
+    background-color: #2f5f74;
+    /* color: #ffffff; */
+}
+
+.seller-products.filter-page ul li:hover a{
+    /* background-color: #2f5f74; */
+    color: #ffffff;
+}
+
+
+.seller-products.filter-page ul li a{
+    padding: 30px;
+}
+
+.seller-products.page-active{
+    background-color: #2f5f74;
+    /* color: #ffffff ; */
+}
+
+
+.seller-products.filter-page ul li .page-active a,
+.seller-products.filter-page ul li :hover a{
+    color: #ffffff;
+}

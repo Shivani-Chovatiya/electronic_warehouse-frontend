@@ -1,0 +1,46 @@
+.cart-row{
+    margin: 50px 0;
+}
+
+.cart-title{
+    text-align: center;
+    letter-spacing: 1.3px;
+    color: cadetblue;
+}
+.cart-items{
+    margin: 40px 0;
+    display: flex;
+    padding: 0 10px;
+}
+.cart-col:first-child{
+    flex: 2;
+}
+.cart-col:last-child{
+    flex: 1;
+}
+
+.cart-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card-footer.cart{
+    margin: 15px 0;
+}
+.card-footer.cart button{
+    display: block;
+    margin: 5px auto;
+      background-color: #2f5f74 ;
+      padding:  10px 25px;
+      border: none;
+      box-shadow: 0 0 5px #2f5f74;
+      color: #ffffff;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+}
+
+.card-footer.cart button:hover{
+    background-color: #ffffff;
+    color: #2f5f74;
+}
