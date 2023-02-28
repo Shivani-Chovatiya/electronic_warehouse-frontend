@@ -8,6 +8,7 @@ import { login } from "../../action/userAction";
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const location = useLocation();
   const redirect = location.search ? location.search.split("=")[1] : "/";
@@ -28,16 +29,21 @@ const Signin = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    //console.log(email, password);
-    //dispatch
-    dispatch(login(email, password));
+    // console.log(email, password);
+    // console.log(dispatch(login(email, password)) != null);
+    if (dispatch(login(email, password)) != null) {
+      setMessage("Enter valid Password...");
+    } else {
+      //dispatch
+      dispatch(login(email, password));
+    }
   };
 
   return (
     <div>
       <FormContainer>
         <h2>SIGN IN</h2>
-
+        {message && <h4 variant="danger">{message}</h4>}
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email Address</Form.Label>

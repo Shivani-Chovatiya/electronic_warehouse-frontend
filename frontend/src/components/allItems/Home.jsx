@@ -15,31 +15,18 @@ const Home = () => {
     const getdata = async () => {
       const resp = await fetch(`http://localhost:8001/product/`);
       const getproduct = await resp.json();
+
       setProduct(getproduct);
       console.log(getproduct);
       // const resp1 = await fetch(`http://localhost:8001/product/sname/`);
       // const getproduct1 = await resp1.json();
-      // {
-      //   getproduct1.map((getproduct2) => {
-      //     setSname(getproduct2);
-      //     console.log(getproduct2);
-      //   });
-      // }
+
       // setSname(getproduct1);
       // console.log(getproduct1);
     };
     getdata();
   }, []);
 
-  // useEffect(() => {
-  //   const getdata = async () => {
-  //     const resp1 = await fetch(`http://localhost:8001/product/sname/`);
-  //     const getproduct1 = await resp1.json();
-  //     setSname(getproduct1);
-  //     console.log(getproduct1);
-  //   };
-  //   getdata();
-  // }, []);
   return (
     <div>
       <Row>
@@ -48,17 +35,6 @@ const Home = () => {
             <AllProduct product={product} />
           </Col>
         ))}
-        {/* // &&
-          //   sellername.map((seller) => (
-          //     <Col key={seller.sellerid} md={3}>
-          //       <AllProduct seller={seller} />
-          //     </Col>
-          //   ))} */}
-        {/* {sellername.map((seller) => (
-            <Col key={seller.sellerid} md={3}>
-              <AllProduct seller={seller} />
-            </Col>
-          ))} */}
       </Row>
 
       {/* <div>
@@ -70,6 +46,12 @@ const Home = () => {
           ))}
         </Row>
       </div> */}
+      {/* <Row>
+        
+        <Col key={products?.id} md={3}>
+          <AllProduct product={products} seller={sellername} />
+        </Col>
+      </Row> */}
     </div>
   );
 };

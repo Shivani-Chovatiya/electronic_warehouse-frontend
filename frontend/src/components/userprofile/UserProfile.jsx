@@ -19,7 +19,7 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
-  console.log(user.name);
+  //console.log(user.name);
 
   // {
   //   user.map((users) => {

@@ -14,22 +14,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
   const res = await fetch(`http://localhost:8001/product/${id}`);
 
   const data = await res.json();
-  // console.log(data);
-  // {
-  //   data.map((values) => {
-  //     dispatch({
-  //       type: CART_ADD_ITEM,
-  //       payload: {
-  //         product: values.id,
-  //         name: values.name,
-  //         image: values.image,
-  //         price: values.price,
-  //         cis: values.cis,
-  //         qty,
-  //       },
-  //     });
-  //   });
-  // }
+
   dispatch({
     type: CART_ADD_ITEM,
     payload: {
@@ -68,31 +53,3 @@ export const savePaymentMethod = (data) => (dispatch) => {
   });
   localStorage.setItem("paymentMethod", JSON.stringify(data));
 };
-
-// export const saveShippingAddress =
-//   (id, mobileno, address, city, postalcode, country) => async (dispatch) => {
-//     try {
-//       dispatch({ type: SHIPPING_ADDRESS_REQUEST });
-//       //const config = { headers: { "Contnet-Type": "application/json" } };
-//       const { data } = await axios.post(
-//         "http://localhost:8002/shipping/",
-//         { id, mobileno, address, city, postalcode, country }
-//         //config
-//       );
-//       console.log(data);
-//       dispatch({
-//         type: SHIPPING_ADDRESS_SUCCESS,
-//         payload: data,
-//       });
-
-//       localStorage.setItem("shippingAddress", JSON.stringify(data));
-//     } catch (error) {
-//       dispatch({
-//         type: SHIPPING_ADDRESS_FAIL,
-//         payload:
-//           error.response && error.response.data.message
-//             ? error.response.data.message
-//             : error.message,
-//       });
-//     }
-//   };

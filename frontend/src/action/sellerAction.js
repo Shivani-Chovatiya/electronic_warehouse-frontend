@@ -5,6 +5,12 @@ import {
   SELLER_LOGIN_REQUEST,
   SELLER_LOGIN_SUCCESS,
   SELLER_LOGIN_FAIL,
+  SELLER_DETAILS_REQUEST,
+  SELLER_DETAILS_SUCCESS,
+  SELLER_DETAILS_FAIL,
+  SELLER_UPDATE_PROFILE_REQUEST,
+  SELLER_UPDATE_PROFILE_SUCCESS,
+  SELLER_UPDATE_PROFILE_FAIL,
 } from "../constants/sellerConstants";
 import axios from "axios";
 import { USER_LOGOUT } from "../constants/userConstants";
@@ -115,3 +121,68 @@ export const sellerlogin2 = (email, password) => async (dispatch) => {
     });
   }
 };
+
+export const getSellerDetails = (sellerid) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: SELLER_DETAILS_REQUEST,
+    });
+    // const {
+    //   userLogin: { userInfo },
+    // } = getState();
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${userInfo.token}`,
+    //   },
+    // };
+    const { data } = await axios.get(
+      `http://localhost:8001/sellers/${sellerid}`
+      //config
+    );
+    console.log(data);
+    dispatch({ type: SELLER_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: SELLER_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateSellerProfile =
+  (sellerid, seller) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: SELLER_UPDATE_PROFILE_REQUEST,
+      });
+      // const {
+      //   userLogin: { userInfo },
+      // } = getState();
+      // const config = {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${userInfo.token}`,
+      //   },
+      // };
+      const { data } = await axios.put(
+        `http://localhost:8001/sellers/${sellerid}`,
+        // { id, name, email, password, mobileno, gender }
+        seller
+        //config
+      );
+      // console.log(data);
+      dispatch({ type: SELLER_UPDATE_PROFILE_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({
+        type: SELLER_UPDATE_PROFILE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };

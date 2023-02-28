@@ -20,7 +20,7 @@ const Products2 = ({ match }) => {
   const [qty, setQty] = useState(1);
   const [productdetails, setProductdetails] = useState([]);
   const { id } = useParams();
-  console.log(productdetails);
+  // console.log(productdetails);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -90,12 +90,12 @@ const Products2 = ({ match }) => {
               <ListGroupItem>
                 <h3>{productdetails.name}</h3>
               </ListGroupItem>
-              {/* <ListGroupItem>
-                  <Rating
-                    value={productdetails.rating}
-                    text={`${productdetails.numReviews} Reviews`}
-                  />
-                </ListGroupItem> */}
+              <ListGroupItem>
+                <Rating
+                  value={productdetails.rating}
+                  // text={`${productdetails.numReviews} Reviews`}
+                />
+              </ListGroupItem>
               <ListGroupItem>Price : ₹{productdetails.price}</ListGroupItem>
             </ListGroup>
           </Col>

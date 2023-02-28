@@ -1,4 +1,5 @@
 import React from "react";
+import Allproducts from "../components/filter/Allproducts";
 import Latest from "../components/latest/Latest";
 import Slider from "../components/slider/Slider";
 import Social from "../components/social/Social";
@@ -9,6 +10,7 @@ const HomeScreen = () => {
     <div>
       <Slider />
       {/* <Latest /> */}
+      <Allproducts />
       <Social />
     </div>
   );

@@ -6,8 +6,8 @@ import { Link, useParams } from "react-router-dom";
 import Rating from "../product/Rating";
 
 const AllProduct = ({ product }) => {
-  // console.log(product);
-  // console.log(product1);
+  //console.log(product);
+  // console.log(seller);
   return (
     <>
       <Card className="my-3 p-3 rounded">
@@ -36,7 +36,10 @@ const AllProduct = ({ product }) => {
             })}
           </div> */}
 
-          {/* <Card.Text as="div">{seller.sname}</Card.Text> */}
+          <Card.Text as="div">
+            Seller Name:
+            <Link to={`/profile2/${product.sellerid}`}>{product.sname}</Link>
+          </Card.Text>
         </Card.Body>
       </Card>
     </>

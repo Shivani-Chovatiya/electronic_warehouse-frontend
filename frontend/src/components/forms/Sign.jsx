@@ -63,7 +63,7 @@ const Sign = () => {
         <h2>Register</h2>
         {message && <h4 variant="danger">{message}</h4>}
         <Form onSubmit={submitHandler}>
-          <Form.Group className="mb-3" controlId="id">
+          {/* <Form.Group className="mb-3" controlId="id">
             <Form.Label>Id</Form.Label>
             <Form.Control
               type="text"
@@ -72,7 +72,7 @@ const Sign = () => {
               onChange={(e) => setUserId(e.target.value)}
               required
             ></Form.Control>
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control

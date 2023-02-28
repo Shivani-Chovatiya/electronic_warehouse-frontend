@@ -7,7 +7,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { searchProduct } from "../action/productAction";
 import { logout } from "../action/userAction";
 
@@ -18,8 +18,15 @@ const Header = () => {
   const dispatch = useDispatch();
   const [searchkey, setsearchkey] = useState("");
 
+  const history = useHistory();
+
   function onLinkClick(e) {
     e.preventDefault();
+    if (!userInfo.name) {
+      history.push("/profile2");
+    } else {
+      history.push("/profile");
+    }
   }
 
   const logoutHandler = (e) => {
@@ -56,10 +63,7 @@ const Header = () => {
                   title={userInfo.name || userInfo.sname}
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item
-                    href="/profile"
-                    // onClick={onLinkClick}
-                  >
+                  <NavDropdown.Item onClick={onLinkClick}>
                     Profile
                   </NavDropdown.Item>
                   <NavDropdown.Item onClick={logoutHandler}>

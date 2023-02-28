@@ -51,6 +51,7 @@ const SellerLoginForm = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const location = useLocation();
   const redirect = location.search ? location.search.split("=")[1] : "/";
   const dispatch = useDispatch();
@@ -71,8 +72,13 @@ const SellerLoginForm = () => {
     e.preventDefault();
     // setFormErrors(validate(formValues));
     // setIsSubmit(true);
-    //dispatch
-    dispatch(sellerlogin2(email, password));
+
+    if (dispatch(sellerlogin2(email, password)) != null) {
+      setMessage("Enter valid Password...");
+    } else {
+      //dispatch
+      dispatch(sellerlogin2(email, password));
+    }
   };
 
   // useEffect(() => {
@@ -129,6 +135,7 @@ const SellerLoginForm = () => {
       </div> */}
       <FormContainer>
         <h2>SIGN IN</h2>
+        {message && <h4 variant="danger">{message}</h4>}
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email Address</Form.Label>

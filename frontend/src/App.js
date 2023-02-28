@@ -23,6 +23,8 @@ import AllItems from "./pages/allitems/AllItems";
 import Home from "./components/allItems/Home";
 import Home2 from "./components/allItems/Home2";
 import Contact from "./pages/contact/Contact";
+import SProfile from "./pages/profile/SProfile";
+import SellerProfile from "./pages/profile/SellerProfile";
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
           <Route path="/profile" component={Profile} exact />
           <Route path="/allitem" component={Home} exact />
           <Route path="/contact" component={Contact} exact />
+          <Route path="/profile2/:id" component={SProfile} exact />
+          <Route path="/profile2" component={SellerProfile} exact />
           {/* <Route path="/allitem" component={Home2} exact /> */}
           {/* <HomeScreen /> */}
         </Container>

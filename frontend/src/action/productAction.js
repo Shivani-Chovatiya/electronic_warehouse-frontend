@@ -348,7 +348,7 @@ export const createProductReview =
     // image,
     // name,
     // price,
-    // rating,
+    rating,
     reveiws
   ) =>
   async (dispatch, getState) => {
@@ -379,7 +379,7 @@ export const createProductReview =
           // image,
           // name,
           // price,
-          // rating,
+          rating,
           reveiws,
           // config
         }
@@ -419,11 +419,23 @@ export const addReview =
       const { data } = await axios.get(
         `http://localhost:8001/product/select/${id}/`
       );
+      console.log(data);
 
+      const rat =
+        data.reduce((acc, item) => parseFloat(item.rating) + acc, 0) /
+        data.length;
+      // console.log(data.reduce((acc, item) => item.rating + acc, 0));
+      // console.log(data.reduce((acc, item) => item.rating));
+      // console.log(data.reduce((acc, item) => acc));
+      console.log(rat);
+      // console.log(data.reduce((acc, item) => item.rating));
+      // console.log(data.reduce((acc, item) => acc));
+      // console.log(data.reduce((acc, item) => acc + item.rating, 0));
+      console.log(data.length);
       dispatch(
         createProductReview(
           id,
-
+          rat,
           data
           // addproduct.productItems
         )
@@ -451,7 +463,6 @@ export const addReview =
       });
       //console.log(data1);
 
-      console.log(data);
       // localStorage.setItem("productItems", JSON.stringify(data));
     } catch (error) {
       dispatch({

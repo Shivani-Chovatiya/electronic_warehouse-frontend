@@ -44,7 +44,7 @@ const Slider = () => {
               {/* <button type="submit" className="btn btn-dark">
                 Buy With us
               </button> */}
-              <Nav.Link href="/shop">Buy With Us</Nav.Link>
+              {/* <Nav.Link href="/shop">Buy With Us</Nav.Link> */}
             </div>
           </div>
         </div>

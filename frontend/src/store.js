@@ -32,6 +32,8 @@ import {
 import {
   sellerRegisterReducer,
   sellerLoginReducer,
+  sellerDetailsReducer,
+  sellerUpdateProfileReducer,
 } from "./reducers/sellerReducer";
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
@@ -78,6 +80,8 @@ const reducer = combineReducers({
   orderListMy: orderListMyReducer,
   productReviewCreate: productReviewCreateReducer,
   addreveiwReducer: addreveiwReducer,
+  sellerDetailsReducer: sellerDetailsReducer,
+  sellerUpdateProfileReducer: sellerUpdateProfileReducer,
   // getAllProductReviewsReducer: getAllProductReviewsReducer,
   //shipping: shippingAddressReducer,
 });
