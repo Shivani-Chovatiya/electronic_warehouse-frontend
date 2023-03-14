@@ -158,7 +158,7 @@ const AddProduct = () => {
       <Form onSubmit={submitForm} className="bg-light p-4">
         <Row className="mb-3">
           <Form.Group className="mb-3" controlId="catagory">
-            <Form.Label>Catagory</Form.Label>
+            <Form.Label>Category</Form.Label>
             <Form.Control
               type="text"
               placeholder="enter catagory"

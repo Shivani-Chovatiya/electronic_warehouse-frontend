@@ -35,8 +35,14 @@ const Header = () => {
     //console.log("Logout");
   };
   return (
-    <>
-      <Navbar bg="light" expand="lg" variant="dark" collapseOnSelect>
+    <div className="p-4  mt-4" style={{ "background-color": "lightblue" }}>
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        // style={{ "background-color": "lightblue" }}
+      >
         <Container fluid>
           <Navbar.Brand href="/">E-Commerce App</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -85,7 +91,7 @@ const Header = () => {
                 <i className="fa-solid fa-cart-shopping"></i>Catagory
               </Nav.Link>
 
-              <Nav.Link href="/cart">
+              <Nav.Link href="/cart/colour">
                 &nbsp;
                 <i className="fa-sharp fa-solid fa-bag-shopping"></i>Cart
               </Nav.Link>
@@ -95,12 +101,15 @@ const Header = () => {
                 <i className="fa-sharp fa-solid fa-bag-shopping"></i>Contact Us
               </Nav.Link>
             </Nav>
-            {/* <Form className="d-flex">
+            <Form className="d-flex">
               <Form.Control
                 type="search"
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
+                style={{
+                  border: "black",
+                }}
                 value={searchkey}
                 onChange={(e) => setsearchkey(e.target.value)}
               />
@@ -112,11 +121,11 @@ const Header = () => {
               >
                 Search
               </Button>
-            </Form> */}
+            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
+    </div>
   );
 };
 

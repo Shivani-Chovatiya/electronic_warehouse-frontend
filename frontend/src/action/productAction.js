@@ -29,6 +29,15 @@ import {
   UPDATE_PRODUCTBYID_FAILS,
   UPDATE_PRODUCTBYID_REQUEST,
   UPDATE_PRODUCTBYID_SUCCESS,
+  PRODUCT_LIST1_REQUEST,
+  PRODUCT_LIST1_SUCCESS,
+  PRODUCT_LIST1_FAILS,
+  PRODUCT_TRY_REQUEST,
+  PRODUCT_TRY_SUCCESS,
+  PRODUCT_TRY_FAILS,
+  PRODUCT_TRY1_REQUEST,
+  PRODUCT_TRY1_SUCCESS,
+  PRODUCT_TRY1_FAILS,
 } from "../constants/productConstants";
 import axios from "axios";
 import swal from "sweetalert";
@@ -45,6 +54,74 @@ export const listProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAILS,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const catProducts = (cartItem) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_LIST1_REQUEST });
+    const { data } = await axios.get(
+      `http://localhost:8001/product/${cartItem}/`
+    );
+    dispatch({
+      type: PRODUCT_LIST1_SUCCESS,
+      payload: data,
+    });
+
+    console.log(data);
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_LIST1_FAILS,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const tryProducts = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_TRY_REQUEST });
+    const { data } = await axios.get(`http://localhost:8001/product/try/${id}`);
+    dispatch({
+      type: PRODUCT_TRY_SUCCESS,
+      payload: data,
+    });
+
+    console.log(data);
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_TRY_FAILS,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const tryProducts1 = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_TRY1_REQUEST });
+    const { data } = await axios.get(
+      `http://localhost:8001/product/try1/${id}`
+    );
+    dispatch({
+      type: PRODUCT_TRY1_SUCCESS,
+      payload: data,
+    });
+
+    console.log(data);
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_TRY1_FAILS,
+
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -73,15 +150,15 @@ export const searchProduct = (searchkey) => async (dispatch) => {
 export const updateProducts =
   (
     sellerid,
-    sname,
-    email,
-    password,
-    mobileno,
-    gstno,
-    panno,
-    address,
-    pincode,
-    isSeller,
+    // sname,
+    // email,
+    // password,
+    // mobileno,
+    // gstno,
+    // panno,
+    // address,
+    // pincode,
+    // isSeller,
     productdetails
   ) =>
   async (dispatch) => {
@@ -91,15 +168,15 @@ export const updateProducts =
       const { data } = await axios.put(
         `http://localhost:8001/sellers/${sellerid}/`,
         {
-          sname,
-          email,
-          password,
-          mobileno,
-          gstno,
-          panno,
-          address,
-          pincode,
-          isSeller,
+          // sname,
+          // email,
+          // password,
+          // mobileno,
+          // gstno,
+          // panno,
+          // address,
+          // pincode,
+          // isSeller,
           productdetails,
         }
       );
@@ -185,15 +262,15 @@ export const addProducts =
       dispatch(
         updateProducts(
           sellerid,
-          sname,
-          email,
-          password,
-          mobileno,
-          gstno,
-          panno,
-          address,
-          pincode,
-          seller,
+          // sname,
+          // email,
+          // password,
+          // mobileno,
+          // gstno,
+          // panno,
+          // address,
+          // pincode,
+          // seller,
           data
           // addproduct.productItems
         )

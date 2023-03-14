@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CheckOut from "../checkout/CheckOut";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createOrder, orderItems } from "../../action/orderAction";
+import emailjs from "@emailjs/browser";
+import ContactUs from "../contact/ContactUs";
 
 const PlaceOrderDetail = ({ history }) => {
   const cart = useSelector((state) => state.cart);
- 
+
   const dispatch = useDispatch();
   const ordercreate = useSelector((state) => state.ordercreate);
   const { order, success, error } = ordercreate;
@@ -36,9 +38,14 @@ const PlaceOrderDetail = ({ history }) => {
   // };
   // console.log(list);
   //console.log(cart.cartItems.name);
+  const refresh = () => {
+    console.log("Hello");
+  };
+  const [result, showResult] = useState(false);
 
-  const placeOrderHandler = () => {
+  const placeOrderHandler = (e) => {
     // cart.cartItems.map((value) => {
+    // order.orderItems.map((orderitem) => {
     dispatch(
       createOrder(
         userInfo.name,
@@ -53,6 +60,22 @@ const PlaceOrderDetail = ({ history }) => {
         cart.totalPrice
       )
     );
+    // });
+    // dispatch(
+    //   createOrder(
+    //     userInfo.name,
+    //     userInfo.email,
+    //     userInfo.id,
+    //     cart.cartItems,
+    //     cart.shippingAddress,
+    //     cart.paymentMethod,
+    //     cart.itemsPrice,
+    //     cart.shippingPrice,
+    //     cart.taxPrice,
+    //     cart.totalPrice
+    //   )
+    // );
+
     // });
   };
   // console.log(userInfo.id);
@@ -105,6 +128,7 @@ const PlaceOrderDetail = ({ history }) => {
                             {item.name}
                           </Link>
                         </Col>
+                        <Col>Colour:{item.colour}</Col>
                         <Col md={4}>
                           {item.qty} X ₹{item.price}
                         </Col>

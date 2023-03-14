@@ -33,6 +33,8 @@ const ContactUs = () => {
 
   return (
     <div>
+      <h3>Fill Form For Contact Us......</h3>
+      &nbsp;&nbsp;
       <Form onSubmit={sendEmail}>
         <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
@@ -80,9 +82,23 @@ const ContactUs = () => {
           </Col>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" name="message" rows={3} required />
+        <Form.Group
+          className="mb-3"
+          as={Row}
+          controlId="exampleForm.ControlTextarea1"
+        >
+          <Form.Label column sm={2}>
+            Message
+          </Form.Label>
+          <Col sm={10}>
+            <Form.Control
+              as="textarea"
+              name="message"
+              rows={3}
+              placeholder="Message"
+              required
+            />
+          </Col>
         </Form.Group>
 
         {/* <label>Message</label>

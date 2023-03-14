@@ -30,6 +30,15 @@ import {
   PRODUCT_CREATE_REVIEW2_REQUEST,
   PRODUCT_CREATE_REVIEW2_SUCCESS,
   PRODUCT_CREATE_REVIEW2_FAIL,
+  PRODUCT_LIST1_REQUEST,
+  PRODUCT_LIST1_SUCCESS,
+  PRODUCT_LIST1_FAILS,
+  PRODUCT_TRY_REQUEST,
+  PRODUCT_TRY_SUCCESS,
+  PRODUCT_TRY_FAILS,
+  PRODUCT_TRY1_REQUEST,
+  PRODUCT_TRY1_SUCCESS,
+  PRODUCT_TRY1_FAILS,
 } from "../constants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -39,6 +48,45 @@ export const productListReducer = (state = { products: [] }, action) => {
     case PRODUCT_LIST_SUCCESS:
       return { loading: false, products: action.payload };
     case PRODUCT_LIST_FAILS:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productCatReducer = (state = { category: [] }, action) => {
+  switch (action.type) {
+    case PRODUCT_LIST1_REQUEST:
+      return { loading: true, category: [] };
+    case PRODUCT_LIST1_SUCCESS:
+      return { loading: false, category: action.payload };
+    case PRODUCT_LIST1_FAILS:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productTryReducer = (state = { tryp: [] }, action) => {
+  switch (action.type) {
+    case PRODUCT_TRY_REQUEST:
+      return { loading: true, tryp: [] };
+    case PRODUCT_TRY_SUCCESS:
+      return { loading: false, tryp: action.payload };
+    case PRODUCT_TRY_FAILS:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productTryReducer1 = (state = { tryp1: [] }, action) => {
+  switch (action.type) {
+    case PRODUCT_TRY1_REQUEST:
+      return { loading: true, tryp1: [] };
+    case PRODUCT_TRY1_SUCCESS:
+      return { loading: false, tryp1: action.payload };
+    case PRODUCT_TRY1_FAILS:
       return { loading: false, error: action.payload };
     default:
       return state;

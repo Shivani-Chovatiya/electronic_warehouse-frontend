@@ -21,13 +21,18 @@ const CartDetail = ({ match }) => {
   const productId = id;
   //console.log(productId);
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  console.log(location.search);
+  console.log(Number(location.search.split("=")[1]));
+  const param = useParams();
+  const colour = param.colour;
+  console.log(colour);
   const dispatch = useDispatch();
   // console.log(qty);
   useEffect(() => {
     if (productId) {
-      dispatch(addToCart(productId, qty));
+      dispatch(addToCart(productId, qty, colour));
     }
-  }, [dispatch, productId, qty]);
+  }, [dispatch, productId, qty, colour]);
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -170,7 +175,11 @@ const CartDetail = ({ match }) => {
                         value={item.qty}
                         onChange={(e) =>
                           dispatch(
-                            addToCart(item.product, Number(e.target.value))
+                            addToCart(
+                              item.product,
+                              Number(e.target.value),
+                              colour
+                            )
                           )
                         }
                       >

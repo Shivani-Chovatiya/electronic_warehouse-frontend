@@ -31,15 +31,17 @@ function App() {
     <Router>
       <Header />
       <main>
+        <Route path="/" component={HomeScreen} exact />
         <Container>
+          <Route path="/allitem" component={Home} exact />
           <Route path="/login" component={Login} exact />
           <Route path="/register" component={Register} exact />
-          <Route path="/" component={HomeScreen} exact />
+
           <Route path="/shop" component={Allproducts} exact />
           <Route path="/seller" component={Seller} />
           {/* <Route path="/seller:id" component={Seller} exact /> */}
           <Route path="/product/:id" component={Product} exact />
-          <Route path="/cart/:id?" component={Cart} exact />
+          <Route path="/cart/:colour/:id?" component={Cart} exact />
           {/* <Route path="/slogin" component={SellerLogin} exact /> */}
           <Route path="/login2" component={SellerLogin} exact />
           <Route path="/register2" component={SellerRegister} exact />
@@ -49,7 +51,7 @@ function App() {
           <Route path="/order/:id" component={OrderScreen} exact />
           {/* <Route path="/allproducts" component={Allproducts} exact /> */}
           <Route path="/profile" component={Profile} exact />
-          <Route path="/allitem" component={Home} exact />
+
           <Route path="/contact" component={Contact} exact />
           <Route path="/profile2/:id" component={SProfile} exact />
           <Route path="/profile2" component={SellerProfile} exact />

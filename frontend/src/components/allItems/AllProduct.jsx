@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 // import { Card, CardText, CardBody, CardTitle, CardImg } from "reactstrap";
 import { Button, Image, Nav } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Rating from "../product/Rating";
 
 const AllProduct = ({ product }) => {
   //console.log(product);
   // console.log(seller);
+  const history = useHistory();
   return (
     <>
       <Card className="my-3 p-3 rounded">

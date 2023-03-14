@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import Allproducts from "../components/filter/Allproducts";
 import Latest from "../components/latest/Latest";
 import Slider from "../components/slider/Slider";
@@ -10,7 +11,10 @@ const HomeScreen = () => {
     <div>
       <Slider />
       {/* <Latest /> */}
-      <Allproducts />
+      <Container>
+        {" "}
+        <Allproducts />
+      </Container>
       <Social />
     </div>
   );

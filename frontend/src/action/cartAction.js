@@ -10,7 +10,7 @@ import {
 } from "../constants/cartConstants";
 import { useState } from "react";
 
-export const addToCart = (id, qty) => async (dispatch, getState) => {
+export const addToCart = (id, qty, colour) => async (dispatch, getState) => {
   const res = await fetch(`http://localhost:8001/product/${id}`);
 
   const data = await res.json();
@@ -25,6 +25,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
       cis: data.cis,
 
       qty,
+      colour,
     },
   });
   //console.log(data);

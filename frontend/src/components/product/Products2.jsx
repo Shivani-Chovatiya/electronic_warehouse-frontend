@@ -7,16 +7,24 @@ import {
   ListGroup,
   Form,
   Button,
+  NavDropdown,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { addReview, createProductReview } from "../../action/productAction";
+import {
+  addReview,
+  createProductReview,
+  tryProducts,
+  tryProducts1,
+} from "../../action/productAction";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../../constants/productConstants";
 import Rating from "./Rating";
 
 const Products2 = ({ match }) => {
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
+  const [colour, setColour] = useState("Red");
+  const [storage, setStorage] = useState("4/64GB");
   const [qty, setQty] = useState(1);
   const [productdetails, setProductdetails] = useState([]);
   const { id } = useParams();
@@ -27,6 +35,12 @@ const Products2 = ({ match }) => {
   const productReviewCreate = useSelector((state) => state.productReviewCreate);
   const { success: successProductReview, error: errorProductReview } =
     productReviewCreate;
+
+  const productTryReducer = useSelector((state) => state.productTryReducer);
+  const { tryp } = productTryReducer;
+
+  const productTryReducer1 = useSelector((state) => state.productTryReducer1);
+  const { tryp1 } = productTryReducer1;
 
   const dispatch = useDispatch();
   const listProductdetails = () => {
@@ -40,9 +54,9 @@ const Products2 = ({ match }) => {
   };
   let history = useHistory();
   const addToCartHandler = () => {
-    history.push(`/cart/${id}?qty=${qty}`);
+    history.push(`/cart/${colour}/${id}?qty=${qty}`);
   };
-
+  // ,colour=${colour},storage=${storage}
   useEffect(() => {
     if (successProductReview) {
       alert("Review Submitted!");
@@ -52,6 +66,10 @@ const Products2 = ({ match }) => {
     }
     listProductdetails();
   }, [dispatch, successProductReview]);
+
+  useEffect(() => {
+    dispatch(tryProducts1(id));
+  }, [dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -108,6 +126,55 @@ const Products2 = ({ match }) => {
                 </Col>
               </Row>
             </ListGroupItem>
+            <ListGroupItem>
+              <Row>
+                <Col>Colour: </Col>
+                <Col value={colour} onChange={(e) => setColour(e.target.value)}>
+                  <Form>
+                    <Form.Group controlId="formGridState"></Form.Group>
+                    <Form.Select>
+                      <option value="Red">Red</option>
+                      <option value="Navy Blue">Navy Blue</option>
+                    </Form.Select>
+                  </Form>
+                </Col>
+              </Row>
+            </ListGroupItem>
+            {/* <ListGroupItem>
+              <Row>
+                <Col>RAM/Storage: </Col>
+                <Col
+                  value={storage}
+                  onChange={(e) => setStorage(e.target.value)}
+                >
+                  {" "}
+                  <Form>
+                    <Form.Group controlId="formGridState"></Form.Group>
+                    <Form.Select>
+                      <option value="4/64GB">4/64GB</option>
+                      <option value="8/64GB">8/64GB</option>
+                      <option value="4/128GB">4/128GB</option>
+                      <option value="8/128GB">8/128GB</option>
+                    </Form.Select>
+                  </Form>
+                </Col>
+              </Row>
+            </ListGroupItem> */}
+            <ListGroupItem>
+              {" "}
+              {tryp1.map((try1) => (
+                <Button style={{ "background-color": "transparent" }}>
+                  <img
+                    src={try1.image}
+                    style={{
+                      height: "45px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => dispatch(tryProducts(try1.tid))}
+                  ></img>{" "}
+                </Button>
+              ))}
+            </ListGroupItem>
             &nbsp;
             {productdetails.cis > 0 && (
               <ListGroupItem>
@@ -136,6 +203,12 @@ const Products2 = ({ match }) => {
               >
                 Add to cart
               </Button>
+            </ListGroupItem>
+            {"  "} &nbsp;
+            <ListGroupItem>
+              {tryp.map((try1) => (
+                <img src={try1.image} style={{ height: "450px" }}></img>
+              ))}
             </ListGroupItem>
           </Col>
         </Row>

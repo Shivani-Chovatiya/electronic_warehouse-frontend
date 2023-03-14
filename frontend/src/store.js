@@ -4,9 +4,12 @@ import {
   getAllProductReviewsReducer,
   getproductByIdReducer,
   getproductReducer,
+  productCatReducer,
   productListReducer,
   productReviewCreateReducer,
   productSellerReducer,
+  productTryReducer,
+  productTryReducer1,
   updateproductByIdReducer,
   updateproductReducer,
 } from "./reducers/productReducer";
@@ -58,6 +61,7 @@ var productInfoFromStorage = localStorage.getItem("productItems")
 
 const reducer = combineReducers({
   productList: productListReducer,
+  productCatReducer: productCatReducer,
   cart: cartReducer,
   userRegister: userRegisterReducer,
   userLogin: userLoginReducer,
@@ -82,6 +86,8 @@ const reducer = combineReducers({
   addreveiwReducer: addreveiwReducer,
   sellerDetailsReducer: sellerDetailsReducer,
   sellerUpdateProfileReducer: sellerUpdateProfileReducer,
+  productTryReducer: productTryReducer,
+  productTryReducer1: productTryReducer1,
   // getAllProductReviewsReducer: getAllProductReviewsReducer,
   //shipping: shippingAddressReducer,
 });

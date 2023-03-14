@@ -32,6 +32,7 @@ export const createOrder =
     shippingprice,
     taxprice,
     totalprice
+    // orderitemsid
   ) =>
   async (dispatch, getState) => {
     try {
@@ -64,8 +65,19 @@ export const createOrder =
         // order
         // config
       );
-      // console.log(userid, email);
+      console.log(data);
       dispatch({ type: ORDER_CREATE_SUCCESS, payload: data });
+
+      {
+        data.orderitems.map(async (oitem) => {
+          const { data1 } = await axios.get(
+            `http://localhost:8001/order/orderitems/${oitem.orderitemsid},${email}`
+
+            // order
+            // config
+          );
+        });
+      }
     } catch (error) {
       dispatch({
         type: ORDER_CREATE_FAIL,
